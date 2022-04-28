@@ -11,7 +11,7 @@ An application for users to find upcoming events.
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
 - [Author](#author)
-- [User Stories](#user-stories-and-scenarios)
+- [User Stories](#-user-stories-and-scenarios-)
 
 ## Overview
 
