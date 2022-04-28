@@ -62,13 +62,17 @@ As a user,
 I should be able to click on an event
 So that I will be able to view or hide details about that event.
 
-#### An event element is collapsed by default
+----
+
+- #### An event element is collapsed by default
 
 Given a user is viewing a list of events.
 
 When the list loads on the page.
 
 Then the element will be collapsed in the list.
+
+----
 
 #### User can expand an event to see its details
 
@@ -78,6 +82,8 @@ When the event is clicked.
 
 Then the element will expand to show more details.
 
+----
+
 #### User can collapse an event to hide its details
 
 Given a user is finished viewing event details.
@@ -86,11 +92,15 @@ When the arrow icon on the event is clicked
 
 Then the element will be collapsed in the list.
 
+----
+
 ### Specify number of events.
 
 As a user,
 I should be able to specify a number,
 So that I can choose how many events will be displayed to me.
+
+----
 
 #### When user hasn't specified a number, 32 is the default number
 
@@ -100,6 +110,8 @@ When the list loads on the page.
 
 Then the list will have at most 32 items populated.
 
+----
+
 #### User can change the number of events they want to see
 
 Given a user wants to change the number of events
@@ -108,11 +120,15 @@ When the user specifies a number of events.
 
 Then the number selected will determine the maximum events to be populated.
 
+----
+
 ### Use the app when offline
 
 As a user, 
 I should be able to be offline,
 So that I can still see the information for the settings I had previously used without internet.
+
+----
 
 #### Show cached data when there's no internet connection
 
@@ -122,6 +138,8 @@ When the page loads.
 
 Then they should be able to see data available from when previously connected.
 
+----
+
 #### Show error when user changes the settings(city, time range)
 
 Given a user has no internet connection
@@ -130,11 +148,15 @@ When the user changes the settings
 
 Then an error should be displayed due to the connection not being available.
 
+----
+
 ### Data visualization
 
 As a user,
 I should be able to see a chart,
 So that I can have a quick view of how many events are in a city.
+
+----
 
 #### Show a chart with the number of upcoming events in each city
 
