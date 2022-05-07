@@ -13,18 +13,19 @@ class Event extends Component {
   };
 
   render() {
+    const { event } = this.props;
     return (
-      <div className="Event">
-        <b className="summary">{this.props.event.summary}</b>
+      <div className="event">
+        <b className="summary">{event.summary}</b>
 
-        <p className="date">{this.props.event.date}</p>
-        <span className="timezone">({this.props.event.timezone})</span>
+        <p className="date">{event.start.dateTime}</p>
+        <span className="timezone">({event.start.timeZone})</span>
         <div className={`details ${this.state.isShowDetails ? 'visible' : ''}`}>
           <h5 className="detail-title">About event:</h5>
-          <a href={this.props.event.htmlLink} className="link">
+          <a href={event.htmlLink} className="link">
             See details on Google Calendar
           </a>
-          <p className="description">{this.props.event.description}</p>
+          <p className="description">{event.description}</p>
         </div>
         <button
           className="details-button"

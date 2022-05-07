@@ -2,13 +2,13 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Event from '../Event';
 import { mockData } from '../mock-data';
-import { extractEvents } from '../api';
+import { getEvents } from '../api';
 
 describe('<Event /> component', () => {
   let EventWrapper;
   let events;
   beforeAll(() => {
-    events = extractEvents(mockData);
+    events = mockData;
     EventWrapper = shallow(<Event event={events[0]} />);
   });
 
@@ -17,12 +17,12 @@ describe('<Event /> component', () => {
   });
 
   test('event date and time is rendered with correct value', () => {
-    expect(EventWrapper.find('.date').text()).toEqual(events[0].date);
+    expect(EventWrapper.find('.date').text()).toEqual(events[0].start.dateTime);
   });
 
   test('event timezone is rendered with correct value', () => {
     expect(EventWrapper.find('.timezone').text()).toEqual(
-      `(${events[0].timezone})`
+      `(${events[0].start.timeZone})`
     );
   });
 

@@ -18,8 +18,8 @@ describe('<NumberOfEvents /> component', () => {
 
   test('update number of events when input is changed', () => {
     NumberOfEventsWrapper.find('.number').simulate('change', {
-      target: { value: 8 },
+      target: { value: 10 },
     });
-    expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe(8);
+    expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe(10);
   });
 });
