@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Event extends Component {
   constructor() {
@@ -14,13 +15,14 @@ class Event extends Component {
 
   render() {
     const { event } = this.props;
+    const { isShowDetails } = this.state;
     return (
       <div className="event">
         <b className="summary">{event.summary}</b>
 
         <p className="date">{event.start.dateTime}</p>
         <span className="timezone">({event.start.timeZone})</span>
-        <div className={`details ${this.state.isShowDetails ? 'visible' : ''}`}>
+        <div className={`details ${isShowDetails ? 'visible' : ''}`}>
           <h5 className="detail-title">About event:</h5>
           <a href={event.htmlLink} className="link">
             See details on Google Calendar
@@ -38,4 +40,14 @@ class Event extends Component {
     );
   }
 }
+
+Event.propTypes = {
+  event: PropTypes.shape({
+    summary: PropTypes.string.isRequired,
+    start: PropTypes.object.isRequired,
+    htmlLink: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  }),
+};
+
 export default Event;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class CitySearch extends Component {
   constructor() {
@@ -12,7 +13,8 @@ class CitySearch extends Component {
 
   handleInputChange = (event) => {
     const { value } = event.target;
-    const suggestions = this.props.locations.filter(
+    const { locations } = this.props;
+    const suggestions = locations.filter(
       (location) => location.toUpperCase().indexOf(value.toUpperCase()) > -1
     );
     this.setState({ query: value, suggestions });
@@ -28,12 +30,13 @@ class CitySearch extends Component {
   };
 
   render() {
+    const { query, showSuggestions, suggestions } = this.state;
     return (
       <div className="CitySearch">
         <input
           type="text"
           className="city"
-          value={this.state.query}
+          value={query}
           onChange={this.handleInputChange}
           onFocus={() => {
             this.setState({ showSuggestions: true });
@@ -41,9 +44,9 @@ class CitySearch extends Component {
         />
         <ul
           className="suggestions"
-          style={this.state.showSuggestions ? {} : { display: 'none' }}
+          style={showSuggestions ? {} : { display: 'none' }}
         >
-          {this.state.suggestions.map((suggestion) => (
+          {suggestions.map((suggestion) => (
             <li
               key={suggestion}
               onClick={() => this.handleItemClicked(suggestion)}
@@ -59,5 +62,10 @@ class CitySearch extends Component {
     );
   }
 }
+
+CitySearch.propTypes = {
+  updateEvents: PropTypes.func.isRequired,
+  locations: PropTypes.array.isRequired,
+};
 
 export default CitySearch;
