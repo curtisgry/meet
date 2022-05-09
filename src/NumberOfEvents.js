@@ -1,28 +1,37 @@
 import React, { Component } from 'react';
 
-export default class NumberOfEvents extends Component {
+class NumberOfEvents extends Component {
   constructor() {
     super();
     this.state = {
-      numberOfEvents: 32,
+      eventNumberValue: 32,
     };
   }
 
   handleChange = (event) => {
+    const { updateEvents } = this.props;
     const { value } = event.target;
-    this.setState({ numberOfEvents: value });
+    this.setState({ eventNumberValue: value });
+
+    updateEvents({ eventCount: value });
   };
 
   render() {
-    const { numberOfEvents } = this.state;
+    const { eventNumberValue } = this.state;
     return (
       <div>
         <input
           className="number"
           onChange={this.handleChange}
-          value={numberOfEvents}
+          value={eventNumberValue}
         />
       </div>
     );
   }
 }
+
+NumberOfEvents.defaultProps = {
+  updateEvents: () => {},
+};
+
+export default NumberOfEvents;

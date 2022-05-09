@@ -9,7 +9,7 @@ describe('<NumberOfEvents /> component', () => {
   });
 
   test('number of events exists in components state', () => {
-    expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe(32);
+    expect(NumberOfEventsWrapper.state('eventNumberValue')).toBe(32);
   });
 
   test('text input for number of events is rendered', () => {
@@ -20,6 +20,6 @@ describe('<NumberOfEvents /> component', () => {
     NumberOfEventsWrapper.find('.number').simulate('change', {
       target: { value: 10 },
     });
-    expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe(10);
+    expect(NumberOfEventsWrapper.state('eventNumberValue')).toBe(10);
   });
 });

@@ -26,7 +26,7 @@ class CitySearch extends Component {
       query: suggestion,
       showSuggestions: false,
     });
-    updateEvents(suggestion);
+    updateEvents({ location: suggestion });
   };
 
   render() {

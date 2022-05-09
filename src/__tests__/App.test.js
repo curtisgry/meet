@@ -66,7 +66,48 @@ describe('<App /> integration', () => {
     const suggestionItems = AppWrapper.find(CitySearch).find('.suggestions li');
     await suggestionItems.at(suggestionItems.length - 1).simulate('click');
     const allEvents = await getEvents();
-    expect(AppWrapper.state('events')).toEqual(allEvents);
+    expect(AppWrapper.state('events')).toEqual(allEvents.slice(0, 32));
+    AppWrapper.unmount();
+  });
+
+  test('number of events loaded by default is 32', async () => {
+    const AppWrapper = mount(<App />);
+    const allEvents = await getEvents();
+    expect(AppWrapper.state('numberOfEvents')).not.toEqual(undefined);
+    const defaultLength = AppWrapper.state('numberOfEvents');
+
+    expect(AppWrapper.state('events')).toEqual(
+      allEvents.slice(0, defaultLength)
+    );
+    AppWrapper.unmount();
+  });
+
+  test('number of events is updated by <NumberOfEvents/>', async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const allEvents = await getEvents();
+
+    await NumberOfEventsWrapper.instance().handleChange({
+      target: { value: 10 },
+    });
+
+    expect(AppWrapper.state('events')).toEqual(allEvents.slice(0, 10));
+
+    AppWrapper.unmount();
+  });
+
+  test('<EventList/> loads the correct amount of events when <App/> state changed', async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    await getEvents();
+    await NumberOfEventsWrapper.instance().handleChange({
+      target: { value: 10 },
+    });
+
+    const EventListWrapper = AppWrapper.find(EventList);
+
+    expect(EventListWrapper.prop('events')).not.toHaveLength(0);
+
     AppWrapper.unmount();
   });
 });
