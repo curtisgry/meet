@@ -20,10 +20,10 @@ class App extends Component {
     this.mounted = true;
     getEvents().then((events) => {
       if (this.mounted) {
-        this.setState((prevState) => ({
-          events: [...events.slice(0, prevState.numberOfEvents)],
+        this.setState({
+          events: [...events.slice(0, 32)],
           locations: extractLocations(events),
-        }));
+        });
       }
     });
   }
@@ -34,7 +34,7 @@ class App extends Component {
 
   updateEvents = ({ location, eventCount }) => {
     // eventsLength will either be count passed to function or current length in state
-    const numberOfEvents = this.state;
+    const { numberOfEvents } = this.state;
     const eventsLength = eventCount || numberOfEvents;
     getEvents().then((events) => {
       let locationEvents;
