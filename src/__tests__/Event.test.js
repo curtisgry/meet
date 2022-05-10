@@ -55,13 +55,13 @@ describe('<Event /> component', () => {
   });
 
   test('change state when clicked to show details', () => {
-    EventWrapper.find('.details-button').simulate('click');
+    EventWrapper.find('.details-btn').simulate('click');
     expect(EventWrapper.state('isShowDetails')).toBe(true);
   });
 
   test('event component details are visible after click', () => {
     EventWrapper.setState({ isShowDetails: false });
-    EventWrapper.find('.details-button').simulate('click');
+    EventWrapper.find('.details-btn').simulate('click');
     expect(EventWrapper.find('.visible')).toHaveLength(1);
   });
 });

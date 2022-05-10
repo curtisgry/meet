@@ -37,9 +37,18 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+      "wesbos"
+    ],
+    "ignorePatterns": [
+      "serviceWorkerRegistration.js"
+    ],
+    "rules": {
+      "react/no-unused-class-component-methods": 0,
+      "jsx-a11y/click-events-have-key-events": 0,
+      "jsx-a11y/no-noninteractive-element-interactions": 0,
+      "camelcase": 1,
+      "no-use-before-define": 1
+    }
   },
   "browserslist": {
     "production": [
