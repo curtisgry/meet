@@ -40,7 +40,8 @@
       "wesbos"
     ],
     "ignorePatterns": [
-      "serviceWorkerRegistration.js"
+      "serviceWorkerRegistration.js",
+      "service-worker.js"
     ],
     "rules": {
       "react/no-unused-class-component-methods": 0,
