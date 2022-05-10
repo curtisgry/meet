@@ -46,7 +46,7 @@ input[type="number"] {
   flex-basis: 300px;
   max-width: 300px;
   margin: auto;
-  margin-bottom: 5rem;
+  margin-bottom: 1rem;
   position: relative;
 }
 
@@ -77,22 +77,34 @@ input[type="number"] {
   background-color: #bcdcdb;
 }
 
+.event-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
 .event {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
   text-align: left;
-  border: 1px solid #ccc;
+
   border-radius: 4px;
   position: relative;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .details-btn {
   position: absolute;
+  font-size: 1rem;
   right: 5px;
   bottom: 5px;
   padding: 5px 8px;
   border-radius: 4px;
+  border: none;
   outline: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  background-color: #55828B;
+  color: white;
   cursor: pointer;
 }
 
@@ -218,5 +230,18 @@ input[type="number"] {
     max-width: 50%;
     min-width: auto;
     margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 1110px) {
+  .event-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+@media only screen and (max-width: 748px) {
+  .event-list {
+    grid-template-columns: 1fr;
   }
 }

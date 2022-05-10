@@ -96,7 +96,7 @@ describe('<App /> integration', () => {
     AppWrapper.unmount();
   });
 
-  test('<EventList/> loads the correct amount of events when <App/> state changed', async () => {
+  test('<EventList/> prop "events" matches <App/> state "events" when changed', async () => {
     const AppWrapper = mount(<App />);
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
     await getEvents();
@@ -104,9 +104,32 @@ describe('<App /> integration', () => {
       target: { value: 10 },
     });
 
+    // Update wrapper so state passed as props will update
+    AppWrapper.update();
+
     const EventListWrapper = AppWrapper.find(EventList);
 
-    expect(EventListWrapper.prop('events')).not.toHaveLength(0);
+    expect(EventListWrapper.prop('events')).toEqual(AppWrapper.state('events'));
+
+    AppWrapper.unmount();
+  });
+
+  test('<EventList/> loads the correct amount of events in a list when <App/> state changed', async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    await getEvents();
+    await NumberOfEventsWrapper.instance().handleChange({
+      target: { value: 10 },
+    });
+
+    // Update wrapper so state passed as props will update
+    AppWrapper.update();
+
+    const EventListWrapper = AppWrapper.find(EventList);
+
+    expect(EventListWrapper.find('.event-list li')).toHaveLength(
+      AppWrapper.state('events').length
+    );
 
     AppWrapper.unmount();
   });

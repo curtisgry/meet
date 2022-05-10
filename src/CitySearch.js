@@ -36,10 +36,14 @@ class CitySearch extends Component {
         <input
           type="text"
           className="city"
+          placeholder="Find A Location"
           value={query}
           onChange={this.handleInputChange}
           onFocus={() => {
             this.setState({ showSuggestions: true });
+          }}
+          onBlur={() => {
+            this.setState({ showSuggestions: false });
           }}
         />
         <ul
