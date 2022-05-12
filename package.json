@@ -84,7 +84,9 @@
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
     "gh-pages": "^3.2.3",
+    "jest-cucumber": "^3.0.1",
     "prettier": "^2.6.2",
+    "puppeteer": "^14.0.0",
     "typescript": "^4.6.4"
   }
 }

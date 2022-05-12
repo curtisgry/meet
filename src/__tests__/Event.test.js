@@ -27,7 +27,7 @@ describe('<Event /> component', () => {
   });
 
   test('event component contains event details container', () => {
-    expect(EventWrapper.find('.details')).toHaveLength(1);
+    expect(EventWrapper.find('.event__Details')).toHaveLength(1);
   });
   test('event component contains event calendar link', () => {
     expect(EventWrapper.find('.link')).toHaveLength(1);

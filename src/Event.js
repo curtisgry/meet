@@ -22,7 +22,7 @@ class Event extends Component {
 
         <p className="date">{event.start.dateTime}</p>
         <span className="timezone">({event.start.timeZone})</span>
-        <div className={`details ${isShowDetails ? 'visible' : ''}`}>
+        <div className={`event__Details ${isShowDetails ? 'visible' : ''}`}>
           <h5 className="detail-title">About event:</h5>
           <a href={event.htmlLink} className="link">
             See details on Google Calendar
