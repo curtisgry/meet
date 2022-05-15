@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import * as atatus from 'atatus-spa';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
@@ -11,6 +12,8 @@ import reportWebVitals from './reportWebVitals';
 //   </React.StrictMode>,
 //   document.getElementById('root')
 // );
+
+atatus.config('3ba60319eac142388dd72cb22b1fb66d').install();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
