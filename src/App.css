@@ -211,7 +211,7 @@ input[type="number"] {
   font-family: "Roboto";
 }
 
-.details {
+.event__Details {
   display: none;
 }
 
