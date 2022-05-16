@@ -49,7 +49,8 @@
       "jsx-a11y/click-events-have-key-events": 0,
       "jsx-a11y/no-noninteractive-element-interactions": 0,
       "camelcase": 1,
-      "no-use-before-define": 1
+      "no-use-before-define": 1,
+      "max-classes-per-file": 0
     }
   },
   "browserslist": {
