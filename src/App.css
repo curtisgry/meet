@@ -144,6 +144,12 @@ input[type="number"] {
   font-family: sans-serif;
 }
 
+.offline-alert {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
 .alert-info {
   position: absolute;
   top: -19px;
