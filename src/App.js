@@ -22,7 +22,7 @@ class App extends Component {
   async componentDidMount() {
     this.mounted = true;
     // if offline return after setting events to avoid errors
-    if (!navigator.online) {
+    if (!navigator.onLine) {
       getEvents().then((events) => {
         console.log(events);
         if (this.mounted) {
