@@ -4,7 +4,8 @@ import './nprogress.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import { extractLocations, getEvents } from './api';
+import WelcomeScreen from './WelcomeScreen';
+import { extractLocations, getEvents, checkToken, getAccessToken } from './api';
 import { InfoAlert } from './Alert';
 
 class App extends Component {
@@ -14,14 +15,36 @@ class App extends Component {
       events: [],
       locations: [],
       numberOfEvents: 32,
+      showWelcomeScreen: undefined,
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
-
+    // if offline return after setting events to avoid errors
+    if (!navigator.online) {
+      getEvents().then((events) => {
+        console.log(events);
+        if (this.mounted) {
+          this.setState({
+            events: [...events.slice(0, 32)],
+            locations: extractLocations(events),
+            showWelcomeScreen: false,
+          });
+        }
+      });
+      return;
+    }
+    const accessToken = localStorage.getItem('access_token');
+    /* eslint-disable */
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    /* eslint-disable */
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get("code");
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
     getEvents().then((events) => {
-      if (this.mounted) {
+      console.log(events)
+      if ((code || isTokenValid) && this.mounted) {
         this.setState({
           events: [...events.slice(0, 32)],
           locations: extractLocations(events),
@@ -60,7 +83,11 @@ class App extends Component {
   };
 
   render() {
-    const { locations, events } = this.state;
+    const { locations, events, showWelcomeScreen } = this.state;
+    if (showWelcomeScreen === undefined) {
+      return <div className="App" />;
+    }
+
     return (
       <div className="App">
         {!navigator.onLine ? (
@@ -71,9 +98,16 @@ class App extends Component {
         ) : (
           ''
         )}
+        <div className='logo'></div>
         <CitySearch locations={locations} updateEvents={this.updateEvents} />
         <NumberOfEvents updateEvents={this.updateEvents} />
         <EventList events={events} />
+        <WelcomeScreen
+          showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => {
+            getAccessToken();
+          }}
+        />
       </div>
     );
   }

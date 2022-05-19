@@ -8,7 +8,8 @@ export const extractLocations = (events) => {
   return locations;
 };
 
-const checkToken = async (accessToken) => {
+export const checkToken = async (accessToken) => {
+  if (!navigator.onLine) return;
   const result = await fetch(
     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
   )
@@ -29,6 +30,7 @@ const removeQuery = () => {
 };
 
 const getToken = async (code) => {
+  if (!navigator.onLine) return;
   const encodeCode = encodeURIComponent(code);
   const { access_token } = await fetch(
     `https://dau1cz6z6a.execute-api.eu-central-1.amazonaws.com/dev/api/token` +
@@ -44,6 +46,7 @@ const getToken = async (code) => {
 };
 
 export const getAccessToken = async () => {
+    if(!navigator.onLine) return
   const accessToken = localStorage.getItem('access_token');
   const tokenCheck = accessToken && (await checkToken(accessToken));
 
