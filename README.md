@@ -28,7 +28,7 @@ Users are able to:
 - Add an app shorcut to the home screen.
 - View a chart showing the number of upcoming events by city.
 
-## Screenshots
+## Screenshot
 
 
 ![](screenshots/screenshot.png)
