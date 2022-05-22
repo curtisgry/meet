@@ -46,7 +46,7 @@ const getToken = async (code) => {
 };
 
 export const getAccessToken = async () => {
-    if(!navigator.onLine) return
+  if(!navigator.onLine) return
   const accessToken = localStorage.getItem('access_token');
   const tokenCheck = accessToken && (await checkToken(accessToken));
 
@@ -67,22 +67,22 @@ export const getAccessToken = async () => {
 };
 
 export const getEvents = async () => {
-  NProgress.start();
+
   if (window.location.href.startsWith('http://localhost')) {
-    NProgress.done();
     return mockData;
   }
  
 
   if (!navigator.onLine) {
     const data = localStorage.getItem("lastEvents");
-    NProgress.done();
     return JSON.parse(data);
   }
 
-  const token = await getAccessToken();
+
+  const token = await getAccessToken()
 
   if (token) {
+    NProgress.start();
     removeQuery();
     const url =
       'https://dau1cz6z6a.execute-api.eu-central-1.amazonaws.com/dev/api/get-events' +

@@ -25,7 +25,7 @@ class App extends Component {
       events: [],
       locations: [],
       numberOfEvents: 32,
-      showWelcomeScreen: false,
+      showWelcomeScreen: true,
     };
   }
 
@@ -47,6 +47,7 @@ class App extends Component {
     }
 
     const accessToken = localStorage.getItem('access_token');
+
     /* eslint-disable */
     const isTokenValid = (await checkToken(accessToken)).error ? false : true;
     /* eslint-disable */
@@ -104,8 +105,15 @@ class App extends Component {
 
   render() {
     const { locations, events, showWelcomeScreen } = this.state;
-    if (showWelcomeScreen === undefined) {
-      return <div className="App" />;
+    if (showWelcomeScreen === true) {
+      return <div className="App"> 
+       <WelcomeScreen
+          showWelcomeScreen={showWelcomeScreen}
+          getAccessToken={() => {
+            getAccessToken();
+          }}
+        />
+      </div>;
     }
 
     return (
@@ -139,12 +147,6 @@ class App extends Component {
         </ResponsiveContainer>
         </div>
         <EventList events={events} />
-        <WelcomeScreen
-          showWelcomeScreen={showWelcomeScreen}
-          getAccessToken={() => {
-            getAccessToken();
-          }}
-        />
       </div>
     );
   }

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
 
 const EventGenre = ({ events }) => {
-  const COLORS = ['#3F4B3B', '#44633F', '#5A9367', '#5CAB7D', '#4ADBC8'];
+  const COLORS = ['#D5BBB1', '#44633F', '#E76D83', '#5CAB7D', '#4ADBC8'];
 
   const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
 
@@ -35,14 +35,12 @@ const EventGenre = ({ events }) => {
           outerRadius={80}
           fill="#8884d8"
           dataKey="value"
-          label={({ name, percent }) =>
-            `${name} ${(percent * 100).toFixed(0)}%`
-          }
         >
           {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
+        <Legend verticalAlign="center" height={36} />
       </PieChart>
     </ResponsiveContainer>
   );

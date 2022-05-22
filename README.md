@@ -30,25 +30,22 @@ Users are able to:
 
 ### Screenshots
 
-*
-<!-- ![](screenshots/screenshot.png) -->
+
+![](screenshots/screenshot.png)
 
 ### Links
 
-*
-<!-- - Live Site URL: [Here](https://myflix-5f2a35.netlify.app/) -->
+- Live Site URL: [Here](https://curtisgry.github.io/meet/)
 
 ### Built with
 
-*
+- React
+- Jest and Puppeteer for testing
+- CSS
 
 ### What I learned
 
-*
-
-### Continued development
-
-*
+I learned how test driven development is used to make code with lest bugs and errors. 
 
 ## Author
 
