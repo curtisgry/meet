@@ -28,22 +28,22 @@ Users are able to:
 - Add an app shorcut to the home screen.
 - View a chart showing the number of upcoming events by city.
 
-### Screenshots
+## Screenshots
 
 
 ![](screenshots/screenshot.png)
 
-### Links
+## Links
 
 - Live Site URL: [Here](https://curtisgry.github.io/meet/)
 
-### Built with
+## Built with
 
 - React
 - Jest and Puppeteer for testing
 - CSS
 
-### What I learned
+## What I learned
 
 I learned how test driven development is used to make code with lest bugs and errors. 
 
